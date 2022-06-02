@@ -1,0 +1,5 @@
+Diarchy is a Spartan server written in Elixir. The implementation emphasizes robustness, correctness, and speed.
+
+Development mainly happens on Sourcehut: https://sr.ht/~slondr/diarchy/
+
+The name comes from the form of government of ancient Sparta, which featured two kings from different dynasties in co-rule, each with veto ability over the other.
