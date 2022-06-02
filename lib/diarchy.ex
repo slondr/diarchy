@@ -10,6 +10,8 @@ defmodule Diarchy do
   end
 
   def read_file(path) do
+    # TODO: Prevent back-tracking
+    # TODO: Directory listing?
     File.read!(path)
   end
 end

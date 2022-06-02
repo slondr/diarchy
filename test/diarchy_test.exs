@@ -27,7 +27,7 @@ defmodule DiarchyTest do
     parsed_request = Diarchy.parse_request("example.com /path 0\r\n")
     
     assert parsed_request.host == "example.com"
-    assert parsed_request.path == "/path"
+    assert parsed_request.path == "path"
     assert parsed_request.content_length == 0
   end
 
@@ -35,7 +35,7 @@ defmodule DiarchyTest do
     parsed_request = Diarchy.parse_request("example.com /path 1\r\na")
 
     assert parsed_request.host == "example.com"
-    assert parsed_request.path == "/path"
+    assert parsed_request.path == "path"
     assert parsed_request.content_length == 1
     assert parsed_request.data_block == "a"
   end
