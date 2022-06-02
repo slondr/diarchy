@@ -6,15 +6,9 @@ packages:
 tasks:
   - build: |
       cd diarchy
-      mix local.hex --force
-      mix local.rebar --force
-      mix setup
       mix compile --warnings-as-errors
   - test: |
       cd diarchy
-      mix local.hex --force
-      mix local.rebar --force
-      mix setup
       mix test
 triggers:
   - action: email
