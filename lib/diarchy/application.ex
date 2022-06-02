@@ -7,9 +7,13 @@ defmodule Diarchy.Application do
 
   @impl true
   def start(_type, _args) do
+    port = (System.get_env("PORT") || "3000") |> String.to_integer()
+    
     children = [
       # Starts a worker by calling: Diarchy.Worker.start_link(arg)
       # {Diarchy.Worker, arg}
+      {Task.Supervisor, name: Diarchy.ServerSupervisor},
+      Supervisor.child_spec({Task, fn -> Diarchy.Server.accept(port) end}, restart: :permanent)
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
