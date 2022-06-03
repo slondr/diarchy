@@ -51,7 +51,7 @@ defmodule Diarchy.Server do
     # TODO: Prevent back-tracking
     # TODO: Directory listing?
     case File.read(path) do
-      {:ok, contents} -> %Response{status: 2, type: "text/plain", content: contents}
+      {:ok, contents} -> %Response{status: 2, type: MIME.from_path(path), content: contents}
       {:error, :enoent} -> %Response{status: 4, type: "file not found"}
       {:error, reason} -> %Response{status: 5, type: reason}
     end
@@ -60,10 +60,9 @@ defmodule Diarchy.Server do
   defp generate_response(data) do
     try do
       parsed_data = parse_request(data)
-      Logger.info "Client sent #{parsed_data.data_block}"
+      Logger.debug "Client sent #{parsed_data.data_block}"
       %Response{status: status, type: type, content: content} = read_file(parsed_data.path)
       resp = [status, type] |> Enum.filter(& & 1) |> Enum.join(" ") |> Kernel.<>("\r\n #{content}")
-      Logger.info "sending #{resp}"
       resp
     rescue
       e ->

@@ -4,7 +4,7 @@ defmodule Diarchy.MixProject do
   def project do
     [
       app: :diarchy,
-      version: "0.2.1",
+      version: "0.3.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -18,5 +18,7 @@ defmodule Diarchy.MixProject do
     ]
   end
 
-  defp deps, do: []
+  defp deps, do: [
+    {:mime, "~> 2.0"}
+  ]
 end

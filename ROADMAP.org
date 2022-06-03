@@ -13,7 +13,7 @@
 #+ticket: 5
 ** TODO Directory backtracking prevention
 #+ticket: 6
-** TODO MIME type support
+** DONE MIME type support
 #+ticket: 7
 ** TODO Directory listing on empty index
 #+ticket: 8
