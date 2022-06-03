@@ -17,24 +17,27 @@ defmodule Diarchy.Server do
   end
 
   defp serve(socket) do
-    socket |> read() |> write(socket)
+    read(socket) |> generate_response() |> write(socket)
     :gen_tcp.shutdown(socket, :read_write)
   end
 
   defp read(socket) do
     {:ok, data} = :gen_tcp.recv(socket, 0)
     Logger.info "Received #{data}"
+    data
+  end
 
+  defp generate_response(data) do
     try do
-    parsed_data = Diarchy.parse_request(data)
-    Logger.info "Client sent #{parsed_data.data_block}"
-    file_contents = Diarchy.read_file(parsed_data.path)
-    # TODO: MIME type support
-    "2 application/octet-stream\r\n" <> file_contents
+      parsed_data = Diarchy.parse_request(data)
+      Logger.info "Client sent #{parsed_data.data_block}"
+      %Diarchy.Response{status: status, type: type, content: content} = Diarchy.read_file(parsed_data.path)
+      resp = [status, type] |> Enum.filter(& & 1) |> Enum.join(" ") |> Kernel.<>("\r\n #{content}")
+      Logger.info "sending #{resp}"
+      resp
     rescue
       e ->
 	Logger.error(Exception.format(:error, e, __STACKTRACE__))
-        # TODO: Respond according to what the actual error is, especially for enoent
         "5 internal server error\r\n"
     end
   end

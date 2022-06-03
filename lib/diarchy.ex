@@ -1,5 +1,7 @@
 defmodule Diarchy do
   alias Diarchy.Request
+  alias Diarchy.Response
+ 
   
   def parse_request(request) do
     [request_line, data_block] = String.split(request, "\r\n", parts: 2, trim: false)
@@ -12,6 +14,10 @@ defmodule Diarchy do
   def read_file(path) do
     # TODO: Prevent back-tracking
     # TODO: Directory listing?
-    File.read!(path)
+    case File.read(path) do
+      {:ok, contents} -> %Response{status: 2, type: "text/plain", content: contents}
+      {:error, :enoent} -> %Response{status: 4, type: "file not found"}
+      {:error, reason} -> %Response{status: 5, type: reason}
+    end
   end
 end

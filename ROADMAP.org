@@ -1,0 +1,25 @@
+#+title: Diarchy Roadmap
+* v1.0
+** TODO Configuration options
+#+ticket: 1
+*** TODO Permanent configuration methods
+#+ticket: 2
+*** TODO Additional host options
+**** TODO Hostname verification
+#+ticket: 3
+**** TODO Unix domain socket support
+#+ticket: 4
+*** TODO Root directory to serve files from
+#+ticket: 5
+** TODO Directory backtracking prevention
+#+ticket: 6
+** TODO MIME type support
+#+ticket: 7
+** TODO Directory listing on empty index
+#+ticket: 8
+** DONE Better error checking
+#+ticket: 9
+** TODO Baseline documentation
+#+ticket: 10
+** TODO Release!
+#+ticket: 11

@@ -3,3 +3,7 @@ Diarchy is a Spartan server written in Elixir. The implementation emphasizes rob
 Development mainly happens on Sourcehut: https://sr.ht/~slondr/diarchy/
 
 The name comes from the form of government of ancient Sparta, which featured two kings from different dynasties in co-rule, each with veto ability over the other.
+
+By default Diarchy listens on port 3000 so users can play around with it without needing root access. Set the PORT environment variable to over-ride this.
+
+Diarchy is capable of serving requests now, but see the roadmap for what's left until v1.0
