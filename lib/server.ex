@@ -62,7 +62,7 @@ defmodule Diarchy.Server do
       parsed_data = parse_request(data)
       Logger.debug "Client sent #{parsed_data.data_block}"
       %Response{status: status, type: type, content: content} = read_file(parsed_data.path)
-      resp = [status, type] |> Enum.filter(& & 1) |> Enum.join(" ") |> Kernel.<>("\r\n #{content}")
+      resp = [status, type] |> Enum.filter(& & 1) |> Enum.join(" ") |> Kernel.<>("\r\n#{content}")
       resp
     rescue
       e ->
