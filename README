@@ -1,12 +1,3 @@
-Eric S. Londres
-
-
-Table of Contents
-─────────────────
-
-
-
-
 Diarchy is a Spartan server written in Elixir. The implementation
 emphasizes robustness, correctness, and speed.
 

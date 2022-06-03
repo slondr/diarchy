@@ -1,3 +1,5 @@
+#+options: num:nil toc:nil
+#+author:
 Diarchy is a Spartan server written in Elixir. The implementation emphasizes robustness, correctness, and speed.
 
 Development mainly happens on Sourcehut: https://sr.ht/~slondr/diarchy/
